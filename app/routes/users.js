@@ -28,6 +28,7 @@ exports.update = (req, res)=>{
     if(user){
       req.session.userId = user._id;
       user.savePassword(req.body.password, ()=>{
+        user.save();
         res.redirect('/play');
       });
     }else{

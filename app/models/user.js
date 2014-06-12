@@ -2,12 +2,18 @@ var userCollection = global.nss.db.collection('users');
 var request = require('request');
 var Mongo = require('mongodb');
 var _ = require('lodash');
+var bcrypt = require('bcrypt');
 
 class User{
+
   savePassword(password, fn){
-    this.password = password;
+    this.password = bcrypt.hashSync(password, 8);;
     this.isValid = true;
     fn();
+  }
+
+  save(fn){
+    userCollection.save(this, ()=>fn());
   }
 
   static create(obj, fn){

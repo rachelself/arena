@@ -1,0 +1,8 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  form(method='post', action='/register')
+    input(type='text', autofocus=true, name='email', placeholder='Email')
+    button Register

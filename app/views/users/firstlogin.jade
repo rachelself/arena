@@ -1,0 +1,12 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  h2 Thanks for verifying your email address.
+
+  h4= user.email
+
+  form(method='post', action='/users/#{user._id}/firstlogin')
+    input(type='password', autofocus=true, name='password', placeholder='Password')
+    button Save Password

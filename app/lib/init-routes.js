@@ -24,6 +24,8 @@ function load(app, fn){
   app.post('/register', dbg, users.validate);
   app.get('/verify/:id', dbg, users.firstLogin);
   app.post('/users/:id/firstlogin', dbg, users.update);
+
+  app.all('*', users.bounce);
   // app.get('/login', dbg, users.login);
   // app.post('/login', dbg, users.authenticate);
   console.log('Routes Loaded');

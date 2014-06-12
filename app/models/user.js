@@ -7,7 +7,7 @@ var bcrypt = require('bcrypt');
 class User{
 
   savePassword(password, fn){
-    this.password = bcrypt.hashSync(password, 8);;
+    this.password = bcrypt.hashSync(password, 8);
     this.isValid = true;
     fn();
   }
